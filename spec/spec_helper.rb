@@ -15,6 +15,8 @@
 # The `.rspec` file also contains a few flags that are not defaults but that
 # users commonly want.
 #
+$LOAD_PATH << File.join('src')
+
 # Coverage configuration
 require 'simplecov'
 require 'coveralls'
