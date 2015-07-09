@@ -19,5 +19,13 @@ $ bundle install
 
 ## Run tests
 ```
-$ rake
+$ rake test:all
+```
+### Unit tests
+```
+$ rake test:unit
+```
+### Integration tests
+```
+$ rake test:integration
 ```
