@@ -12,7 +12,7 @@ class Cure_discoverer
   end
 
   def check_disease_exists(color)
-    raise DiseaseError unless @discovered.has_key?(color)
+    raise DiseaseError, 'No such disease' unless @discovered.has_key?(color)
   end
 
   def discover_all
@@ -24,7 +24,6 @@ class Cure_discoverer
   end
 
   def all_cures_discovered?
-    return false if @discovered.any? { |k, v| @discovered[k] == false }
-    true
+    return @discovered.all? { |k, v| @discovered[k] == true }
   end
 end
