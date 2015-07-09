@@ -8,20 +8,20 @@ RSpec.describe Cure_discoverer, ".discover" do
     end
   end
   context "When the disease does not exist" do
-    it "Raises DiseaseError" do
-      expect { subject.discover :non_existant_disease }.to raise_error DiseaseError
+    it "Raises CureError" do
+      expect { subject.discover :non_existant_cure }.to raise_error CureError
     end
   end
 end
 
 RSpec.describe Cure_discoverer, ".all_cures_discovered?" do
-  context "When all diseases have been discovered" do
+  context "When all cures have been discovered" do
     it "Returns true" do
       subject.discover_all
       expect(subject.all_cures_discovered?).to eq true
     end
   end
-  context "When not all diseases have been discovered" do
+  context "When not all cures have been discovered" do
     it "Returns false" do
       expect(subject.all_cures_discovered?).to eq false
     end

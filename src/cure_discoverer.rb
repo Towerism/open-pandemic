@@ -1,32 +1,40 @@
-class DiseaseError < RuntimeError
+class CureError < RuntimeError
 end
 
 class Cure_discoverer
   def initialize
-    @discovered = { :blue => false, :yellow => false, :red => false, :black => false }
+    @cures = [:blue, :yellow, :red, :black]
+    init_discovered
+  end
+
+  def init_discovered
+    @discovered = Hash.new
+    @cures.each do |cure| 
+      @discovered[cure] = false
+    end
   end
 
   def discover_all
     @discovered.each { |k, v| discover k }
   end
 
-  def discover disease
-    check_disease_exists disease
-    @discovered[disease] = true
+  def discover cure
+    check_cure_exists cure
+    @discovered[cure] = true
   end
 
-  def check_disease_exists disease
-    raise DiseaseError, "No such disease, '#{disease}'" unless @discovered.has_key? disease
+  def check_cure_exists cure
+    raise CureError, "No such cure, '#{cure}'" unless @cures.include? cure
   end
 
   def all_cures_discovered?
     return @discovered.all? { |k, v| discovered? k }
   end
 
-  def discovered? disease
-    check_disease_exists disease
-    @discovered[disease]
+  def discovered? cure
+    check_cure_exists cure
+    @discovered[cure]
   end
 
-  private :check_disease_exists
+  private :check_cure_exists
 end
