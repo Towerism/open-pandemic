@@ -1,5 +1,7 @@
 $LOAD_PATH << File.join('src')
 
+require 'rspec/expectations'
+
 require 'simplecov'
 require 'coveralls'
 SimpleCov.formatter = Coveralls::SimpleCov::Formatter
