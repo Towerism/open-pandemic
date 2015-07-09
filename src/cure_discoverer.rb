@@ -9,7 +9,7 @@ class Cure_discoverer
 
   def init_discovered
     @discovered = Hash.new
-    @cures.each do |cure| 
+    @cures.each do |cure|
       @discovered[cure] = false
     end
   end
@@ -36,5 +36,5 @@ class Cure_discoverer
     @discovered[cure]
   end
 
-  private :check_cure_exists
+  private :check_cure_exists, :init_discovered
 end
