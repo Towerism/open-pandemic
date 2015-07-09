@@ -8,6 +8,6 @@ class Objective_status
   end
 
   def check_win
-    return :win if @cure_discoverer.cures == 4
+    return :win if @cure_discoverer.all_cures_discovered?
   end
 end

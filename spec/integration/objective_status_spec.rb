@@ -6,7 +6,7 @@ RSpec.describe Objective_status, "#get" do
     it "returns that the player has won" do
       cure_discoverer = Cure_discoverer.new
       objective_status = Objective_status.new(cure_discoverer)
-      4.times { cure_discoverer.discover }
+      cure_discoverer.discover_all
       expect(objective_status.get).to eq :win
     end
   end
