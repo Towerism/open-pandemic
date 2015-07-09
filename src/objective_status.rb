@@ -1,5 +1,5 @@
 class Objective_status
-  def initialize(cure_discoverer)
+  def initialize cure_discoverer
     @cure_discoverer = cure_discoverer
   end
 

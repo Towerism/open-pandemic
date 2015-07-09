@@ -4,14 +4,14 @@ RSpec.describe Cure_discoverer, "#discover" do
   context "When the specified disease has not yet been cured" do
     it "Cures the specified disease" do
       cure_discoverer = Cure_discoverer.new
-      cure_discoverer.discover(:blue)
-      expect(cure_discoverer.discovered?(:blue)).to eq true
+      cure_discoverer.discover :blue
+      expect(cure_discoverer.discovered? :blue).to eq true
     end
   end
   context "When the specified disease does not exist" do
     it "Throws DiseaseError" do
       cure_discoverer = Cure_discoverer.new
-      expect { cure_discoverer.discover(:non_existant_disease) }.to raise_error(DiseaseError)
+      expect { cure_discoverer.discover :non_existant_disease }.to raise_error DiseaseError
     end
   end
 end
