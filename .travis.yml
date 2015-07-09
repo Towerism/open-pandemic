@@ -1,3 +1,9 @@
 language: ruby
 rvm:
   2.2.2
+
+env:
+  - TEST_SUITE=unit
+  - TEST_SUITE=integration
+
+script: bundle exec rake test:$TEST_SUITE
