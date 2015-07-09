@@ -1,13 +1,3 @@
-def use_test_folder task, folder
-  wild_folder = emplace_wildcard_folder(folder)
-  task.pattern = "spec/#{wild_folder}/*_spec.rb"
-end
-
-def emplace_wildcard_folder folder
-  return "#{folder}/**" if folder != '**'
-  return folder
-end
-
 namespace :test do
   begin
     require 'rspec/core/rake_task'
@@ -31,3 +21,14 @@ end
 task :test => 'test:all'
 
 task :default => :test
+
+
+def use_test_folder task, folder
+  wild_folder = emplace_wildcard_folder(folder)
+  task.pattern = "spec/#{wild_folder}/*_spec.rb"
+end
+
+def emplace_wildcard_folder folder
+  return "#{folder}/**" if folder != '**'
+  return folder
+end
