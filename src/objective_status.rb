@@ -9,5 +9,6 @@ class Objective_status
 
   def check_win
     return :win if @cure_discoverer.all_cures_discovered?
+    :okay
   end
 end
