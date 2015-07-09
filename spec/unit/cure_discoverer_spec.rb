@@ -1,18 +1,33 @@
 require 'cure_discoverer'
 
 RSpec.describe "Cure_discoverer", "#discover" do
-  context "When there are less than 4 cures discovered" do
-    it "Increases the amount of cures discovered by 1" do
-      discoverer = Cure_discoverer.new
-      discoverer.discover
-      expect(discoverer.cures).to eq 1
+  context "When the specified disease has not yet been cured" do
+    it "Cures the specified disease" do
+      cure_discoverer = Cure_discoverer.new
+      cure_discoverer.discover(:blue)
+      expect(cure_discoverer.discovered?(:blue)).to eq true
     end
   end
-  context "When there are already 4 cures discovered" do
-    it "Does not increase the amount of cures discovered" do
-      discoverer = Cure_discoverer.new
-      5.times { discoverer.discover }
-      expect(discoverer.cures).to eq 4
+  context "When the specified disease does not exist" do
+    it "Throws DiseaseError" do
+      cure_discoverer = Cure_discoverer.new
+      expect { cure_discoverer.discover(:non_existant_disease) }.to raise_error(DiseaseError)
+    end
+  end
+end
+
+RSpec.describe "Cure_discoverer", "#all_cures_discovered?" do
+  context "When all diseases have been discovered" do
+    it "Returns true" do
+      cure_discoverer = Cure_discoverer.new
+      cure_discoverer.discover_all
+      expect(cure_discoverer.all_cures_discovered?).to eq true
+    end
+  end
+  context "When not all diseases have been discovered" do
+    it "Returns false" do
+      cure_discoverer = Cure_discoverer.new
+      expect(cure_discoverer.all_cures_discovered?).to eq false
     end
   end
 end

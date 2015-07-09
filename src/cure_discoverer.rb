@@ -1,20 +1,30 @@
+class DiseaseError < RuntimeError
+end
+
 class Cure_discoverer
   def initialize
-    @cures = 0
+    @discovered = { :blue => false, :yellow => false, :red => false, :black => false }
   end
 
-  def discover
-    @cures += 1
-    normalize_cures
+  def discover(color)
+    check_disease_exists(color)
+    @discovered[color] = true
   end
 
-  def normalize_cures
-    if @cures >= 4
-      @cures = 4
-    end
+  def check_disease_exists(color)
+    raise DiseaseError unless @discovered.has_key?(color)
   end
 
-  def cures
-    @cures
+  def discover_all
+    @discovered.each { |k, v| @discovered[k] = true }
+  end
+
+  def discovered?(color)
+    @discovered.fetch(color)
+  end
+
+  def all_cures_discovered?
+    return false if @discovered.any? { |k, v| @discovered[k] == false }
+    true
   end
 end
