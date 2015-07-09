@@ -1,6 +1,6 @@
 require 'cure_discoverer'
 
-RSpec.describe "Cure_discoverer", "#discover" do
+RSpec.describe Cure_discoverer, "#discover" do
   context "When the specified disease has not yet been cured" do
     it "Cures the specified disease" do
       cure_discoverer = Cure_discoverer.new
@@ -16,7 +16,7 @@ RSpec.describe "Cure_discoverer", "#discover" do
   end
 end
 
-RSpec.describe "Cure_discoverer", "#all_cures_discovered?" do
+RSpec.describe Cure_discoverer, "#all_cures_discovered?" do
   context "When all diseases have been discovered" do
     it "Returns true" do
       cure_discoverer = Cure_discoverer.new
