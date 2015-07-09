@@ -10,19 +10,19 @@ RSpec.describe Objective_status, ".get" do
   before(:each) { player_deck.add Player_card.new }
 
   context "When all cures have been discovered" do
-    it "Returns win" do
+    it "should be win" do
       cure_discoverer.discover_all
       expect(subject.get).to eq :win
     end
   end
   context "When the player deck is empty" do
-    it "Returns lose" do
+    it "should be lose" do
       player_deck.discard_all_cards
       expect(subject.get).to eq :lose
     end
   end
   context "When neither lost nor won" do
-    it "Returns okay" do
+    it "should be okay" do
       expect(subject.get).to eq :okay
     end
   end
