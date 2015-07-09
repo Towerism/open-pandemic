@@ -1,10 +1,6 @@
 class Objective_status
-  def initialize
-    @cures = 0
-  end
-
-  def discover_cure
-    @cures += 1
+  def initialize(cure_discoverer)
+    @cure_discoverer = cure_discoverer
   end
 
   def get
@@ -12,6 +8,6 @@ class Objective_status
   end
 
   def check_win
-    return :win if @cures >= 4
+    return :win if @cure_discoverer.cures == 4
   end
 end
