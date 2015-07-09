@@ -13,7 +13,7 @@ namespace :test do
     RSpec::Core::RakeTask.new(:all) do |t|
       use_test_folder(t, '**')
     end
-  rescue Load_error
+  rescue LoadError
     sh 'which rspec'
   end
 end
