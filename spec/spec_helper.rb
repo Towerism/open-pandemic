@@ -19,7 +19,7 @@ RSpec.configure do |config|
   end
 
   config.disable_monkey_patching!
-  config.default_formatter = 'doc'
+  config.default_formatter = 'Fuubar'
 
   config.order = :random
   Kernel.srand config.seed
