@@ -5,25 +5,21 @@ require 'player_deck'
 RSpec.describe Objective_status, ".get" do
   let(:cure_discoverer) { Cure_discoverer.new }
   let(:player_deck) { Player_deck.new }
-  subject { Objective_status.new cure_discoverer, player_deck }
+  let(:objective_status) { Objective_status.new cure_discoverer, player_deck }
+
+  subject { objective_status.get }
 
   before(:each) { player_deck.add Player_card.new }
 
   context "When all cures have been discovered" do
-    it "should be win" do
-      cure_discoverer.discover_all
-      expect(subject.get).to eq :win
-    end
+    before { cure_discoverer.discover_all }
+    it { is_expected.to be :win }
   end
   context "When the player deck is empty" do
-    it "should be lose" do
-      player_deck.discard_all_cards
-      expect(subject.get).to eq :lose
-    end
+    before { player_deck.discard_all_cards }
+    it { is_expected.to be :lose }
   end
   context "When neither lost nor won" do
-    it "should be okay" do
-      expect(subject.get).to eq :okay
-    end
+    it { is_expected.to be :okay }
   end
 end

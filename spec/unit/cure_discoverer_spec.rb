@@ -15,15 +15,14 @@ RSpec.describe Cure_discoverer, ".discover" do
 end
 
 RSpec.describe Cure_discoverer, ".all_cures_discovered?" do
+  let(:cure_discoverer) { Cure_discoverer.new }
+  subject { cure_discoverer.all_cures_discovered? }
+
   context "When all cures have been discovered" do
-    it "should return true" do
-      subject.discover_all
-      expect(subject.all_cures_discovered?).to eq true
-    end
+    before { cure_discoverer.discover_all }
+    it { is_expected.to eq true }
   end
   context "When not all cures have been discovered" do
-    it "should return false" do
-      expect(subject.all_cures_discovered?).to eq false
-    end
+    it { is_expected.to eq false }
   end
 end
