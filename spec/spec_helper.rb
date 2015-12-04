@@ -1,4 +1,4 @@
-$LOAD_PATH << File.join('src')
+$LOAD_PATH << File.join('open-pandemic')
 
 require 'rspec/expectations'
 
