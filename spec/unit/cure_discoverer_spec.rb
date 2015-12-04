@@ -2,8 +2,8 @@ require 'cure_discoverer'
 
 RSpec.describe Cure_discoverer, ".discover" do
   context "When the disease has not yet been cured" do
+    before { subject.discover :blue }
     it "should cure the disease" do
-      subject.discover :blue
       expect(subject.discovered? :blue).to eq true
     end
   end
